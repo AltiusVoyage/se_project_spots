@@ -1,0 +1,46 @@
+.avatar {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  width: 505px;
+  height: 190px;
+}
+
+.avatar__image {
+  width: 190px;
+  height: 190px;
+  padding-right: 20px;
+  border-radius: 8px;
+}
+
+.avatar__details {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+
+.avatar__details_post {
+  display: flex;
+  flex-direction: row;
+  margin-top: auto;
+}
+
+.avatar__details_post-pencil {
+  margin-right: 8px;
+}
+
+.avatar__details_post-subtitle {
+}
+
+.avatar__description {
+}
+
+.avatar__description_title {
+  margin: 0 auto 12px;
+}
+
+.avatar__description_subtitle {
+  margin: 0;
+}
