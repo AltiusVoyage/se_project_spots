@@ -13,6 +13,25 @@
   border-radius: 8px;
 }
 
+.avatar__description {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.avatar__description_title {
+  margin: 0 auto 12px;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.avatar__description_subtitle {
+  margin: 0;
+}
+
 .avatar__details {
   display: flex;
   flex-direction: column;
@@ -32,15 +51,6 @@
 }
 
 .avatar__details_post-subtitle {
-}
-
-.avatar__description {
-}
-
-.avatar__description_title {
-  margin: 0 auto 12px;
-}
-
-.avatar__description_subtitle {
-  margin: 0;
+  font-size: 16px;
+  line-height: 1;
 }
