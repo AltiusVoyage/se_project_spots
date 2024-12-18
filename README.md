@@ -2,7 +2,9 @@
 
 An image-sharing site
 
-## Describe the project an its functionality
+## Description
+
+In this project, I was tasked with utilizing grid formatting to create a social media profile page that flowed and functioned interactively on both desktop and mobile screens. This was the first time receiving a project brief through Figma, which allowed me to receive dimensions and expectations the same way I would in the workforce
 
 ## Tech Stack
 
@@ -16,22 +18,13 @@ This Webpage is deployed to GitHub Pages
 
 - Deployment Link:
 
-### Overview
+## Plans
 
-- Intro
-- Figma
-- Images
+This project has put everything learned so far to the test. There are a few parts I intend to have corrected by the next round of improvements. For one, the header logo simply refuses to stay centered or with the white background. I may have it in the wrong container
 
-**Intro**
+Also, the separate card entries kept losing their margins when I tried using DevTools in Opera, but they seemed to adjust just fine in Chrome. I hope it's not a difference that the user feels as well.
 
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.
+the majority of my dimensions are in pixels because I'm not accustomed to using vh or percentages. even if it isn't affecting the site now, i'm open to converting code even for pracice sake.
 
-**Figma**
-
-- [Link to the project on Figma](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
-
-**Images**
-
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster.
-
-Good luck and have fun!
+[desktop] (./images/demo/Spots-Desktop-Full.png)
+[tablet] (./images/demo/Spots-Tablet-Full.png)
