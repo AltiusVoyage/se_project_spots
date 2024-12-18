@@ -1,21 +1,57 @@
 .profile {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: end;
-  padding: 0 0 20px;
-  height: 210px;
+  padding: 34px 0 20px;
   border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
 }
 
-.profile__image {
+.profile__avatar {
   width: 190px;
   height: 190px;
   padding-right: 20px;
   border-radius: 8px;
 }
 
-.profile__button {
+
+.profle__column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0;
+  width: 505px;
+  height: 190px;
+}
+
+.profile__name {
+  margin: 0 0 12px;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.profile__description {
+  margin: 0;
+  color: rgba(33, 33, 33, 0.7);
+}
+
+.profile__edit-btn {
+  display: flex;
+  flex-direction: row;
+  margin-top: auto;
+  color: rgba(33, 33, 33, 1);
+}
+
+.profile__edit-pencil {
+  margin-right: 8px;
+}
+
+.profile__edit-text {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.profile__add-btn {
   display: flex;
   flex-direction: row;
   width: 149px;
@@ -27,56 +63,56 @@
   margin-left: auto;
 }
 
-.profile__button_icon {
+.profile__add-icon {
   width: 12px;
   height: 12px;
   margin-right: 2px;
 }
 
-.profile__button_text {
+.profile__add-txt {
   font-size: 16px;
   line-height: 1;
   color: #fcf5e5;
 }
 
-@media screen and (max-width: 627px) {
+@media screen and (max-width: 327px) {
   .profile {
     flex-direction: column;
     max-width: 288px;
-    height: 300px;
     align-items: center;
     text-align: center;
-    margin: 20px auto;
   }
 
-  .profile__image {
-    margin-right: 0 0 12px;
+  .profile__avatar {
+    margin: 0 0 12px;
     height: 80px;
     width: 80px;
   }
 
-  .profile__button {
-    margin: 20px 0;
-  }
-
-  .avatar {
+  .profile__column {
     margin-top: 12px;
     max-width: 288px;
   }
 
-  .avatar__title {
+  .profile__name {
     font-size: 20px;
     margin: 0 0 6px;
   }
 
-  .avatar__subtitle {
+  .profile__description {
     padding-bottom: 32px;
   }
 
-  .avatar__button {
+  .profile__edit-btn {
     margin-bottom: 0 auto 20px;
     font-size: 16px;
     line-height: 1;
     rgba(33, 33, 33, .7)
   }
+
+  .profile__add-btn {
+    margin: 20px 0;
+  }
+
+
 }
