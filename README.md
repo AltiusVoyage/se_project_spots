@@ -25,6 +25,3 @@ This project has put everything learned so far to the test. There are a few part
 Also, the separate card entries kept losing their margins when I tried using DevTools in Opera, but they seemed to adjust just fine in Chrome. I hope it's not a difference that the user feels as well.
 
 the majority of my dimensions are in pixels because I'm not accustomed to using vh or percentages. even if it isn't affecting the site now, i'm open to converting code even for pracice sake.
-
-[desktop] (./images/demo/Spots-Desktop-Full.png)
-[tablet] (./images/demo/Spots-Tablet-Full.png)
