@@ -14,7 +14,7 @@ In this project, I was tasked with utilizing grid formatting to create a social 
 
 ## Deployment
 
-This Webpage is deployed to GitHub Pages
+This Webpage is deployed to GitHub Pages: https://altiusvoyage.github.io/se_project_spots/
 
 - Deployment Link:
 
