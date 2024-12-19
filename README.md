@@ -18,6 +18,8 @@ This Webpage is deployed to GitHub Pages
 
 - Deployment Link: https://altiusvoyage.github.io/se_project_spots/
 
+- Video of current progress: https://drive.google.com/file/d/1VkrQtpM8vPx23RXroxz-3VuO2lTpGt9a/view?usp=sharing
+
 ## Plans
 
 This project has put everything learned so far to the test. There are a few parts I intend to have corrected by the next round of improvements. For one, the header logo simply refuses to stay centered or with the white background. I may have it in the wrong container
