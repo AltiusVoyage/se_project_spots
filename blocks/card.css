@@ -43,14 +43,15 @@
   opacity: 1;
 }
 
-@media screen and (max-width: 327px) {
+@media screen and(max-width: 327px) {
   .card {
     height: 318px;
-    width: 100%;
+    width: 288px;
     margin: 20 auto;
   }
 
   .card__image {
     height: 288px;
+    width: 100%;
   }
 }

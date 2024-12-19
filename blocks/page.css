@@ -1,7 +1,6 @@
 .page {
   background-color: #fcf5e5;
-  min-height: 100vh;
-  width: 100vw;
+  min-height: 100%;
   padding: 0 80px 60px;
   font-family: Poppins, Arial, Helvetica, sans-serif;
   font-weight: 500;
@@ -22,9 +21,9 @@
   -webkit-box-orient: vertical;
 }
 
-@media screen and(min-width: 320px) and(max-width: 844px) {
+@media screen and(max-width: 844px) {
   .page__section {
     margin: 20px 16px;
-    width: 100%;
+    width: 288px;
   }
 }

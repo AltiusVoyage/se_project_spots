@@ -5,6 +5,7 @@
   padding: 0;
   border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
   grid-template-columns: repeat(auto-fit, 413px);
+  justify-content: center;
 }
 
 .card__details {
@@ -16,8 +17,9 @@
   margin-top: 12px;
 }
 
-@media screen and(min-width: 320px) and(max-width: 844px) {
+@media screen (max-width: 327px) {
   .cards {
-    grid-template-columns: repeat(auto-fit, 288px);
+    display: block;
+    justify-content: center;
   }
 }
