@@ -2,11 +2,11 @@
   background-color: #fff;
   width: 100%;
   margin-bottom: 34px;
+  display: flex;
+  justify-content: center;
 }
 
 .header__logo {
   width: 94px;
   height: 26px;
-  display: flex;
-  justify-content: center;
 }

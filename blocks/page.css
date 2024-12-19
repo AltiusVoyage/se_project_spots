@@ -1,14 +1,17 @@
 .page {
   background-color: #fcf5e5;
   min-height: 100vh;
+  width: 100vw;
   padding: 0 80px 60px;
   font-family: Poppins, Arial, Helvetica, sans-serif;
   font-weight: 500;
+  align-content: center;
 }
 
 .page__section {
   max-width: 1280px;
   margin: 0 auto;
+  align-items: center;
 }
 
 .page__description {
@@ -17,4 +20,11 @@
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+
+@media screen and(min-width: 320px) and(max-width: 844px) {
+  .page__section {
+    margin: 20px 16px;
+    width: 100%;
+  }
 }
