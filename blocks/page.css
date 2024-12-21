@@ -1,6 +1,5 @@
 .page {
   background-color: #fcf5e5;
-  background-position: ;
   height: 100%;
   padding: 0 80px 60px;
   font-family: Poppins, Arial, Helvetica, sans-serif;
@@ -14,17 +13,9 @@
   align-items: center;
 }
 
-.page__description {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-}
-
 @media screen and (max-width: 327px) {
   .page__section {
     margin: 20px 16px;
-    width: 288px;
+    width: 100%;
   }
 }
