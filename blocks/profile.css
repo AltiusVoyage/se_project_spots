@@ -108,10 +108,10 @@
     flex-direction: column;
     max-width: 288px;
     height: 274px;
-    gap: 20px;
     align-items: center;
     text-align: center;
-    margin: 0 auto 0;
+    padding: 0;
+    margin: 20px auto;
   }
 
   .profile__avatar {
@@ -123,7 +123,7 @@
   .profile__column {
     margin-top: 12px;
     max-width: 288px;
-    margin-bottom: 0;
+    margin-bottom: 20px;
   }
 
   .profile__name {
@@ -142,11 +142,13 @@
     font-size: 16px;
     line-height: 1;
     align-items: center;
-    margin: auto 0 0;
+    margin: 32px auto 0;
   }
 
   .profile__add-btn {
     text-align: center;
-    width: 100%;
+    width: 288px;
+    margin: 0 auto 20px;
+    flex-shrink: 0;
   }
 }
