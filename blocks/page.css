@@ -13,9 +13,12 @@
   align-items: center;
 }
 
-@media screen and (max-width: 327px) {
+@media screen and (max-width: 488px) {
+  .page {
+    padding: 0 20px 60px;
+  }
+
   .page__section {
-    margin: 20px 16px;
     width: 100%;
   }
 }
