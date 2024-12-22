@@ -23,7 +23,7 @@
 
 .card__text {
   line-height: 1.2;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500px;
   font-style: normal;
   text-overflow: ellipsis;
@@ -35,13 +35,16 @@
 }
 
 .card__like {
-  background-image: url(../images/like\ icon.svg);
+  background-image: url(../images/like-icon.svg);
   width: 20px;
   height: 18px;
   border: none;
   background-color: transparent;
   opacity: 40%;
   cursor: pointer;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .card__like:hover {
@@ -56,5 +59,9 @@
   .card__image {
     height: 288px;
     width: 100%;
+  }
+
+  .card__text {
+    font-size: 16px;
   }
 }
