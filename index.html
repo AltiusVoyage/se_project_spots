@@ -48,72 +48,15 @@
           </button>
         </div>
         <ul class="cards page__section">
-          <li class="card">
-            <img
-              src="images/1-photo-by-moritz-feldmann-from-pexels.jpg"
-              alt="Snowy Lodge Image"
-              class="card__image"
-            />
-            <div class="card__details">
-              <h2 class="card__text">Val Thorens</h2>
-              <button class="card__like" type="button"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img
-              src="images/2-photo-by-ceiline-from-pexels.jpg"
-              alt="Snowy Lodge Image"
-              class="card__image"
-            />
-            <div class="card__details">
-              <h2 class="card__text">Restaurant Terrace</h2>
-              <button class="card__like" type="button"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img
-              src="images/3-photo-by-tubanur-dogan-from-pexels.jpg"
-              alt="Snowy Lodge Image"
-              class="card__image"
-            />
-            <div class="card__details">
-              <h2 class="card__text">An outdoor cafe</h2>
-              <button class="card__like" type="button"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img
-              src="images/4-photo-by-maurice-laschet-from-pexels.jpg"
-              alt="Snowy Lodge Image"
-              class="card__image"
-            />
-            <div class="card__details">
-              <h2 class="card__text">A very long bridge, over the forest...</h2>
-              <button class="card__like" type="button"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img
-              src="images/5-photo-by-van-anh-nguyen-from-pexels.jpg"
-              alt="Snowy Lodge Image"
-              class="card__image"
-            />
-            <div class="card__details">
-              <h2 class="card__text">Tunnel with morning light</h2>
-              <button class="card__like" type="button"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img
-              src="images/6-photo-by-moritz-feldmann-from-pexels.jpg"
-              alt="Snowy Lodge Image"
-              class="card__image"
-            />
-            <div class="card__details">
-              <h2 class="card__text">Mountain House</h2>
-              <button class="card__like" type="button"></button>
-            </div>
-          </li>
+          <template id="card-template">
+            <li class="card">
+              <img src="" alt="" class="card__image" />
+              <div class="card__details">
+                <h2 class="card__text"></h2>
+                <button class="card__like" type="button"></button>
+              </div>
+            </li>
+          </template>
         </ul>
       </main>
       <footer class="footer">
@@ -124,18 +67,19 @@
           <button type="submit" class="modal__close-btn"></button>
           <h2 class="modal__title">Edit profile</h2>
           <form name="edit-profile" class="modal__form">
-            <label for="name" class="modal__label">
+            <label for="profile-name-input" class="modal__label">
               Name
               <input
-                id="name"
+                id="profile-name-input"
+                type="text"
                 class="modal__input"
                 placeholder="Type your name"
               />
             </label>
-            <label for="description" class="modal__label">
+            <label for="profile-description-input" class="modal__label">
               Description
               <input
-                id="description"
+                id="profile-description-input"
                 class="modal__input"
                 placeholder="Describe yourself"
               />
