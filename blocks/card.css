@@ -21,7 +21,7 @@
   margin-top: 12px;
 }
 
-.card__text {
+.card__title {
   line-height: 1.2;
   font-size: 20px;
   font-weight: 500px;
@@ -29,6 +29,7 @@
   max-width: 85%;
   margin: 0;
   padding: 0;
+  display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
