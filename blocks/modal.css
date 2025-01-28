@@ -63,6 +63,7 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  -webkit-line-clamp: 1;
 }
 
 .modal__input {
