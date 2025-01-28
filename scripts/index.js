@@ -60,9 +60,9 @@ function getCardElement(data) {
 }
 
 function openModal() {
-  editModalNameInput.value = profileName.textContent;
-  editModalDescriptionInput.value = profileEdit.textContent;
   editModal.classList.add("modal_opened");
+  editModalNameInput.value = profileName.textContent;
+  editModalDescriptionInput.value = profileDescription.textContent;
 }
 
 function closeModal() {
@@ -72,7 +72,7 @@ function closeModal() {
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = editModalNameInput.value;
-  profileEdit.textContent = editModalDescriptionInput.value;
+  profileDescription.textContent = editModalDescriptionInput.value;
 }
 
 profileEditButton.addEventListener("click", openModal);
