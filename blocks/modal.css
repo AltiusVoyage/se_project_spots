@@ -31,6 +31,7 @@
 
 .modal__close-btn {
   background-image: url(../images/Close-button.svg);
+  background-color: transparent;
   position: absolute;
   top: 32px;
   right: 50px;
@@ -59,6 +60,9 @@
   margin-bottom: 32px;
   opacity: 70%;
   font-size: 16px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .modal__input {
@@ -75,6 +79,7 @@
   color: #fcf5e5;
   font-size: 16px;
   font-family: Poppins;
+  cursor: pointer;
 }
 
 .modal__submit-btn:hover {
