@@ -34,6 +34,12 @@
   padding: 0;
 }
 
+.card__footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .card__like {
   background-image: url(../images/like-icon.svg);
   width: 20px;
@@ -45,6 +51,7 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  margin: auto 0;
 }
 
 .card__like:hover {

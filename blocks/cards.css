@@ -8,6 +8,10 @@
   justify-content: center;
 }
 
+.cards__list {
+  display: grid;
+}
+
 @media screen and (max-width: 488px) {
   .cards {
     grid-template-columns: repeat(auto-fit, 288px);
