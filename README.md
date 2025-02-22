@@ -10,7 +10,7 @@ In this project, I was tasked with utilizing grid formatting to create a social 
 
 - HTML
 - CSS
-- Responsive Design
+- JavaScript for responsive design
 
 ## Deployment
 

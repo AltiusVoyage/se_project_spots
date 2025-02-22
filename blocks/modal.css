@@ -15,7 +15,7 @@
   visibility: hidden;
 }
 
-.modal_opened {
+.modal_is-opened {
   visibility: visible;
 }
 
@@ -81,6 +81,7 @@
   font-size: 16px;
   font-family: Poppins;
   cursor: pointer;
+  transition: bas 0.3s;
 }
 
 .modal__submit-btn:hover {
