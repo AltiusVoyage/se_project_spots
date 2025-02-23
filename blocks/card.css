@@ -24,6 +24,7 @@
 
 .card__title {
   line-height: 1.2;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-size: 20px;
   font-weight: 500px;
   font-style: normal;
@@ -64,10 +65,11 @@
 .card__like-button_liked {
   background-image: url("../images/like-icon-liked.svg");
   opacity: 1;
+  background-color: transparent;
 }
 
 .card__like-button_liked:hover {
-  background-image: url("../images/like-icon-liked-hover.svg");
+  opacity: 0.5;
 }
 
 .card__delete-button {
