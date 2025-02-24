@@ -63,7 +63,7 @@
 }
 
 .card__like-button_liked {
-  background-image: url("../images/like-icon-liked.svg");
+  background-image: url("../images/liked-icon-hover.svg");
   opacity: 1;
   background-color: transparent;
 }

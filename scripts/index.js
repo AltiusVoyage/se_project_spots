@@ -83,6 +83,7 @@ function handleAddCardSubmit(evt) {
   cardsList.prepend(cardElement);
 
   evt.target.reset();
+  closeModal(cardModal);
 }
 
 function getCardElement(data) {
@@ -126,7 +127,6 @@ editModalSubmitBtn.addEventListener("click", () => {
   closeModal(editModal);
 });
 
-editForm.addEventListener("submit", handleEditFormSubmit);
 editModalCloseBtn.addEventListener("click", () => {
   closeModal(editModal);
 });
