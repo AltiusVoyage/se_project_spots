@@ -46,6 +46,7 @@ const editModalSubmitBtn = editModal.querySelector(".modal__submit-btn");
 const cardModal = document.querySelector("#add-card-modal");
 const cardModalCloseBtn = cardModal.querySelector(".modal__close");
 const cardForm = cardModal.querySelector(".modal__form");
+const cardSubmitBtn = cardModal.querySelector(".modal__submit-btn");
 const cardNameInput = cardModal.querySelector("#add-card-name-input");
 const cardLinkInput = cardModal.querySelector("#add-card-link-input");
 
@@ -76,13 +77,11 @@ function handleEditFormSubmit(evt) {
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
-  console.log(cardNameInput.value);
-  console.log(cardLinkInput.value);
-  const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
-  const cardElement = getCardElement(inputValues);
-  cardsList.prepend(cardElement);
-
+  const values = { name: cardNameInput.value, link: cardLinkInput.value };
+  const cardEl = getCardElement(values);
+  cardsList.prepend(cardEl);
   evt.target.reset();
+  disableButton(cardSubmitBtn, settings);
   closeModal(cardModal);
 }
 
@@ -101,7 +100,7 @@ function getCardElement(data) {
     cardLikeBtn.classList.toggle("card__like-button_liked");
   });
 
-  cardDelete.addEventListener("click", (event) => {
+  cardDelete.addEventListener("click", (evt) => {
     if (cardElement) {
       cardElement.remove();
     }
@@ -120,6 +119,7 @@ function getCardElement(data) {
 profileEditButton.addEventListener("click", () => {
   editModalNameInput.value = profileName.textContent;
   editModalDescriptionInput.value = profileDescription.textContent;
+  resetValidation(editForm, [cardNameInput, editModalDescriptionInput]);
   openModal(editModal);
 });
 

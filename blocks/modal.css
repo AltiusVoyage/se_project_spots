@@ -135,6 +135,18 @@
   font-size: 20px;
 }
 
+.modal__input_type_error {
+  border: 1px solid rbga(255, 0, 0, 0.6);
+}
+
+.modal__error {
+  display: block;
+  color: #ff0000;
+  font-size: 16px;
+  margin-top: 8px;
+  opacity: 70%;
+}
+
 .modal__submit-btn {
   width: 156px;
   padding: 18px 0;
@@ -142,11 +154,14 @@
   border-radius: 8px;
   color: #fcf5e5;
   font-size: 16px;
-  font-family: Poppins;
+  font-family: "Poppins";
   cursor: pointer;
   transition: bas 0.3s;
 }
 
+.modal__submit-btn_disabled {
+  opacity: 50%;
+}
 .modal__submit-btn:hover {
   opacity: 80%;
 }
