@@ -7,14 +7,14 @@ const settings = {
   errorClass: "modal__error",
 };
 
-const showInputError = (formEl, inputEl, errorMsg) => {
-  const errorMsgEl = formEl.querySelector(`#${inputEl.id}-error`);
+const showInputError = (formEl, inputEl, errorMsg, config) => {
+  const errorMsgEl = formEl.querySelector(config.inputErrorClass);
   errorMsgEl.textContent = errorMsg;
-  inputEl.classList.add(".modal__input_type_error");
+  inputEl.classList.add(config.inputErrorClass);
 };
 
 const hideInputError = (formEl, inputEl, config) => {
-  const errorMsgEl = formEl.querySelector(`#${inputEl.id}-error`);
+  const errorMsgEl = formEl.querySelector(config.inputErrorClass);
   errorMsgEl.textContent = "";
   inputEl.classList.remove(config.inputErrorClass);
 };
@@ -47,9 +47,9 @@ const disableButton = (buttonEl, config) => {
   buttonEl.classList.add(config.inactiveButtonClass);
 };
 
-const resetValidation = (formEl, inputList) => {
+const resetValidation = (formEl, inputList, config) => {
   inputList.forEach((input) => {
-    hideInputError(formEl, input);
+    hideInputError(formEl, input, config);
   });
 };
 
