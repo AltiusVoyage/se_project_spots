@@ -136,6 +136,7 @@
 }
 
 .modal__input_type_error {
+  display: block;
   border: 1px solid rbga(255, 0, 0, 0.6);
 }
 

@@ -8,15 +8,15 @@ const settings = {
 };
 
 const showInputError = (formEl, inputEl, errorMsg, config) => {
-  const errorEl = document.querySelector(`#${inputEl.id}-error`);
+  const errorEl = formEl.querySelector(`#${inputEl.id}-error`);
   errorEl.textContent = errorMsg;
-  inputEl.classList.add(config.inputErrorClass);
+  errorEl.classList.add(config.errorClass);
 };
 
 const hideInputError = (formEl, inputEl, config) => {
-  const errorEl = document.querySelector(`#${inputEl.id}-error`);
+  const errorEl = formEl.querySelector(`#${inputEl.id}-error`);
   errorEl.textContent = "";
-  inputEl.classList.remove(config.inputErrorClass);
+  errorEl.classList.remove(config.ErrorClass);
 };
 
 const checkInputValidity = (formEl, inputEl, config) => {
@@ -48,7 +48,7 @@ const disableButton = (buttonEl, config) => {
 };
 
 const resetValidation = (formEl, inputList, config) => {
-  inputList.forEach((inputEl, formEl, config) => {
+  inputList.forEach((formEl, inputEl, config) => {
     hideInputError(formEl, inputEl, config);
   });
 };
