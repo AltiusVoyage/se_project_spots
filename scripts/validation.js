@@ -8,13 +8,13 @@ const settings = {
 };
 
 const showInputError = (formEl, inputEl, errorMsg, config) => {
-  const errorEl = formEl.querySelector(`#${inputEl.id}-error`);
+  const errorEl = document.querySelector(`#${inputEl.id}-error`);
   errorEl.textContent = errorMsg;
   inputEl.classList.add(config.inputErrorClass);
 };
 
 const hideInputError = (formEl, inputEl, config) => {
-  const errorEl = formEl.querySelector(`#${inputEl.id}-error`);
+  const errorEl = document.querySelector(`#${inputEl.id}-error`);
   errorEl.textContent = "";
   inputEl.classList.remove(config.inputErrorClass);
 };
