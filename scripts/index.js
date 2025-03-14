@@ -70,11 +70,13 @@ function closeModal(modal) {
 
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
-  enableValidation(config);
   profileName.textContent = editModalNameInput.value;
   profileDescription.textContent = editModalDescriptionInput.value;
-  checkInputValidity(config);
-  resetValidation(config);
+  resetValidation(
+    editForm,
+    [editModalNameInput, editModalDescriptionInput],
+    settings
+  );
   closeModal(editModal);
 }
 
@@ -84,7 +86,6 @@ function handleAddCardSubmit(evt) {
   const cardEl = getCardElement(values);
   cardsList.prepend(cardEl);
   evt.target.reset();
-  enableValidation(settings);
   disableButton(cardSubmitBtn, settings);
   closeModal(cardModal);
 }
