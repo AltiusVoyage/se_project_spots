@@ -70,9 +70,11 @@ function closeModal(modal) {
 
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
+  enableValidation(config);
   profileName.textContent = editModalNameInput.value;
   profileDescription.textContent = editModalDescriptionInput.value;
-  enableValidation(config);
+  checkInputValidity(config);
+  resetValidation(config);
   closeModal(editModal);
 }
 
@@ -135,6 +137,7 @@ editModalSubmitBtn.addEventListener("click", () => {
 });
 
 editModalCloseBtn.addEventListener("click", () => {
+  resetValidation(config);
   closeModal(editModal);
 });
 
