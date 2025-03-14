@@ -140,11 +140,14 @@
 }
 
 .modal__error {
-  display: block;
+  display: none;
   color: #ff0000;
   font-size: 16px;
-  margin-top: 8px;
   opacity: 70%;
+}
+
+.modal__error_active {
+  display: block;
 }
 
 .modal__submit-btn {

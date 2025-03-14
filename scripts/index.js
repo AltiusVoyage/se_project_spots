@@ -138,7 +138,6 @@ editModalSubmitBtn.addEventListener("click", () => {
 });
 
 editModalCloseBtn.addEventListener("click", () => {
-  resetValidation(config);
   closeModal(editModal);
 });
 
