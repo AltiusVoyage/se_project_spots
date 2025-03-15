@@ -61,9 +61,8 @@ const cardTemplate = document
 const cardsList = document.querySelector(".cards__list");
 
 function closeOverlay(evt) {
-  const openModal = document.querySelector(".modal_is-opened");
   if (evt.target.classList.contains("modal")) {
-    closeModal(openModal);
+    closeModal(evt.target);
   }
 }
 
@@ -92,11 +91,6 @@ function handleEditFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = editModalNameInput.value;
   profileDescription.textContent = editModalDescriptionInput.value;
-  resetValidation(
-    editForm,
-    [editModalNameInput, editModalDescriptionInput],
-    settings
-  );
   closeModal(editModal);
 }
 
@@ -152,20 +146,15 @@ profileEditButton.addEventListener("click", () => {
   openModal(editModal);
 });
 
-editModalCloseBtn.addEventListener("click", () => {
-  closeModal(editModal);
+const closeButtons = document.querySelectorAll(".modal__close");
+
+closeButtons.forEach((button) => {
+  const popup = button.closest(".modal");
+  button.addEventListener("click", () => closeModal(popup));
 });
 
 cardModalBtn.addEventListener("click", () => {
   openModal(cardModal);
-});
-
-cardModalCloseBtn.addEventListener("click", () => {
-  closeModal(cardModal);
-});
-
-previewModalClose.addEventListener("click", () => {
-  closeModal(previewModal);
 });
 
 editForm.addEventListener("submit", handleEditFormSubmit);
