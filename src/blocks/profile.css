@@ -5,10 +5,47 @@
   border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
 }
 
+.profile__avatar-container {
+  position: relative;
+  margin-right: 20px;
+}
+
+.profile__avatar-btn {
+  position: absolute;
+  top: 162px;
+  left: 39px;
+  width: 111.34px;
+  height: 16px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 90px;
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.profile__avatar-container:hover .profile__avatar-btn {
+  visibility: visible;
+  opacity: 50%;
+}
+
+.profile__avatar-btn::after {
+  content: "Edit Avatar";
+  width: 88px;
+  height: 16px;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
 .profile__avatar {
   width: 190px;
   height: 190px;
-  margin-right: 20px;
   border-radius: 8px;
   object-fit: cover;
 }
@@ -117,7 +154,13 @@
     width: 80px;
   }
 
-  .profile__column {
+  .profile__avatar-btn {
+    visibility: visible;
+  }
+
+  /* set content of ::after elemtn to "", finish moblile avatar*/
+
+  .provile .profile__column {
     max-width: 288px;
     margin-bottom: 20px;
   }

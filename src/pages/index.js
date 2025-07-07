@@ -10,25 +10,37 @@ const api = new Api({
   },
 });
 
-// destructure the second item in the callback of the.then()
+function showErrorMessage(message) {
+  const errorElement = document.querySelector("#error-message");
+  errorElement.textContent = message;
+  errorElement.classList.add("error-message_visible");
+}
+
 api
   .getAppInfo()
-  .then(([cards]) => {
-    console.log(cards);
-    cards.forEach((item) => {
+  .then(([user, cards]) => {
+    userId = user._id;
+    cards.forEach(([item]) => {
       const cardElement = getCardElement(item);
       cardsList.append(cardElement);
-
-      // Handle the user's information
     });
-  })
-  .catch(console.error(err));
 
+    avatarImage.src = user.avatar;
+    profileName.textContent = user.name;
+    profileDescription.textContent = user.about;
+  })
+  .catch((err) => {
+    showErrorMessage("something went wrong. Please try again later.");
+  });
+
+// Profile elements
 const profileEditButton = document.querySelector(".profile__edit-btn");
 const cardModalBtn = document.querySelector(".profile__add-btn");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
+const avatarModalBtn = document.querySelector(".profile__avatar-btn");
 
+// Edit form elements
 const editModal = document.querySelector("#edit-modal");
 const editForm = editModal.querySelector(".modal__form");
 const editModalCloseBtn = editModal.querySelector(".modal__close");
@@ -38,6 +50,7 @@ const editModalDescriptionInput = editModal.querySelector(
 );
 const editModalSubmitBtn = editModal.querySelector(".modal__submit-btn");
 
+// Card form elements
 const cardModal = document.querySelector("#add-card-modal");
 const cardModalCloseBtn = cardModal.querySelector(".modal__close");
 const cardForm = cardModal.querySelector(".modal__form");
@@ -45,6 +58,17 @@ const cardSubmitBtn = cardModal.querySelector(".modal__submit-btn");
 const cardNameInput = cardModal.querySelector("#add-card-name-input");
 const cardLinkInput = cardModal.querySelector("#add-card-link-input");
 
+// Avatar form elements
+const avatarModal = document.querySelector("#avatar-modal");
+const avatarForm = avatarModal.querySelector(".modal__form");
+const avatarSubmitBtn = avatarModal.querySelector(".modal__submit-btn");
+const avatarModalCloseBtn = avatarModal.querySelector(".modal__close");
+const avatarInput = avatarModal.querySelector("#profile-avatar-input");
+
+// Delete form elements
+const deleteModal = document.querySelector("#delete-modal");
+
+//Preview image popup elements
 const previewModal = document.querySelector("#preview-modal");
 const previewModalImageEl = previewModal.querySelector(".modal__image");
 const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
@@ -84,19 +108,38 @@ function closeModal(modal) {
 
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
-  profileName.textContent = editModalNameInput.value;
-  profileDescription.textContent = editModalDescriptionInput.value;
-  closeModal(editModal);
+  api
+    .editUserInfo({ name: profileName.value, about: profileDescription.value })
+    .then((data) => {
+      profileName.textContent = data.name;
+      profileDescription.textContent = data.about;
+      closeModal(editModal);
+    })
+    .catch((err) => {
+      showErrorMessage("Unable to update profile. Please try again.");
+    });
 }
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
+
   const values = { name: cardNameInput.value, link: cardLinkInput.value };
   const cardEl = getCardElement(values);
   cardsList.prepend(cardEl);
   evt.target.reset();
   disableButton(cardSubmitBtn, settings);
   closeModal(cardModal);
+}
+
+//finish avatar submission handler
+function handleAvatarSubmit(evt) {
+  evt.preventDefault();
+  api.editAvatarInfo(avatarInput.value).then().catch(console.error);
+  //finish work
+}
+
+function handleDeleteCard(evt) {
+  openModal(deleteModal);
 }
 
 function getCardElement(data) {
@@ -133,11 +176,6 @@ function getCardElement(data) {
 profileEditButton.addEventListener("click", () => {
   editModalNameInput.value = profileName.textContent;
   editModalDescriptionInput.value = profileDescription.textContent;
-  resetValidation(
-    editForm,
-    [editModalNameInput, editModalDescriptionInput],
-    config
-  );
   openModal(editModal);
 });
 
@@ -147,6 +185,12 @@ closeButtons.forEach((button) => {
   const popup = button.closest(".modal");
   button.addEventListener("click", () => closeModal(popup));
 });
+
+// todo-select avater modal button at top of page
+avatarModalBtn.addEventListener("click", () => {
+  openModal(avatarModal);
+});
+avatarForm.addEventListener("submit", handleAvatarSubmit);
 
 cardModalBtn.addEventListener("click", () => {
   openModal(cardModal);

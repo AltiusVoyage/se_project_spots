@@ -19,12 +19,21 @@
         />
       </header>
       <main class="content">
-        <div class="profile page__section">
-          <img
-            src="<%= require('./images/avatar.jpg')%>"
-            alt="Profile Image"
-            class="profile__avatar"
-          />
+        <section class="profile page__section">
+          <div class="profile__avatar-container">
+            <button class="profile__avatar-btn">
+              <img
+                src="<%= require('./images/pencil-light.svg')%>"
+                alt="Pencil icon"
+                class="profile__pencil-icon"
+              />
+            </button>
+            <img
+              src="<%= require('./images/avatar.jpg')%>"
+              alt="Profile Image"
+              class="profile__avatar"
+            />
+          </div>
           <div class="profile__column">
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
@@ -45,7 +54,7 @@
             />
             <span class="profile__add-txt">New Post</span>
           </button>
-        </div>
+        </section>
         <section class="cards page__section">
           <ul class="cards__list">
             <template id="card-template">
@@ -148,6 +157,43 @@
         ></button>
         <img class="modal__image" src="" alt="" />
         <p class="modal__caption"></p>
+      </div>
+    </div>
+    <div class="modal" id="avatar-modal">
+      <div class="modal__container">
+        <button type="button" class="modal__close"></button>
+        <h2 class="modal__title">Edit Avatar</h2>
+        <form id="add-card-form" class="modal__form" novalidate>
+          <label class="modal__label" for="profile-avatar-input">
+            Avatar
+            <input
+              id="profile-avatar-input"
+              type="url"
+              class="profile-avatar-input"
+              name="avatar"
+              placeholder="avatar goes here"
+              required
+            />
+            <span id="provile-avatar-input-error" class="modal__error"></span>
+          </label>
+          <button type="submit" class="modal__submit-btn">Save</button>
+        </form>
+      </div>
+    </div>
+    <!--= todo style the modal -->
+    <div class="modal" id="delete-modal">
+      <div class="modal__container-delete">
+        <button
+          type="button"
+          class="modal__close modal__close_type_delete"
+        ></button>
+        <h2 class="modal__title-delete">
+          Are you sure you want to delete this image?
+        </h2>
+        <form id="delete-form" class="modal__form" novalidate>
+          <button type="submit" class="modal__submit-btn-delete">Delete</button>
+          <button type="button" class="modal__cancel-btn">Cancel</button>
+        </form>
       </div>
     </div>
   </body>
