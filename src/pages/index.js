@@ -29,7 +29,7 @@ api
   .getAppInfo()
   .then(([user, cards]) => {
     userId = user._id;
-    cards.forEach(([item]) => {
+    cards.forEach((item) => {
       const cardElement = getCardElement(item);
       cardsList.append(cardElement);
     });
@@ -230,11 +230,9 @@ deleteCancelButton.addEventListener("click", () => {
   closeModal(deleteModal);
 });
 
-function handleLike(evt, id) {
-  evt.target.classList.toggle("card__like-button_liked");
-}
-
-function getCardElement(data) {
+// call changeLikeStatus, passing appropriate arguments
+// handle .then(toggle active class) and .catch
+function getCardElement(data, userId) {
   const cardElement = cardTemplate.cloneNode(true);
   cardElement.id = data._id;
   cardElement.dataset.cardid = data._id;
@@ -244,11 +242,31 @@ function getCardElement(data) {
   const cardLikeBtn = cardElement.querySelector(".card__like-button");
   const cardDelete = cardElement.querySelector(".card__delete-button");
 
+  let isLiked = user.data == data.likes;
+
+  if (isLiked) {
+    cardLikeBtn.classList.add("card__like-button_liked");
+  }
+
   cardTitleEl.textContent = data.name;
   cardImageEl.src = data.link;
   cardImageEl.alt = data.name;
 
-  cardLikeBtn.addEventListener("click", (evt) => handleLike(evt, data._id));
+  cardLikeBtn.addEventListener("click", () => {
+    api
+      .handleLike(data._id, isLiked)
+      .then((res) => {
+        if (res) {
+          isLiked = !isLiked;
+          cardLikeBtn.classList.toggle("card__like-button_liked");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        showErrorMessage("Unable to update like. Please try again.");
+      });
+  });
+
   cardDelete.addEventListener("click", () =>
     handleDeleteCard(cardElement, data._id)
   );
