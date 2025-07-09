@@ -75,3 +75,7 @@ export const enableValidation = (config) => {
     setEventListeners(formEl, config);
   });
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+  enableValidation(settings);
+});
