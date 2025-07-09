@@ -10,14 +10,14 @@ export const settings = {
 const showInputError = (formEl, inputEl, errorMsg, config) => {
   const errorEl = formEl.querySelector(`#${inputEl.id}-error`);
   errorEl.textContent = errorMsg;
-  inputEl.classList.add(config.errorClass);
+  inputEl.classList.add(config.inputErrorClass);
   errorEl.classList.add(config.errorClass);
 };
 
 const hideInputError = (formEl, inputEl, config) => {
   const errorEl = formEl.querySelector(`#${inputEl.id}-error`);
   errorEl.textContent = "";
-  inputEl.classList.remove(config.errorClass);
+  inputEl.classList.remove(config.inputErrorClass);
   errorEl.classList.remove(config.errorClass);
 };
 
@@ -44,7 +44,7 @@ const toggleButtonState = (inputList, buttonEl, config) => {
   }
 };
 
-const disableButton = (buttonEl, config) => {
+export const disableButton = (buttonEl, config) => {
   buttonEl.disabled = true;
   buttonEl.classList.add(config.inactiveButtonClass);
 };
@@ -75,7 +75,3 @@ export const enableValidation = (config) => {
     setEventListeners(formEl, config);
   });
 };
-
-document.addEventListener("DOMContentLoaded", () => {
-  enableValidation(settings);
-});

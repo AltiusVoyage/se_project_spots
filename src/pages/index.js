@@ -69,15 +69,17 @@ const cardLinkInput = cardModal.querySelector("#add-card-link-input");
 
 // Avatar form elements
 const avatarModal = document.querySelector("#avatar-modal");
-const avatarForm = avatarModal.querySelector(".modal__form");
+const avatarFormEl = avatarModal.querySelector("#edit-avatar-form");
 const avatarSubmitBtn = avatarModal.querySelector(".modal__submit-btn");
 const avatarModalCloseBtn = avatarModal.querySelector(".modal__close");
-const avatarInput = avatarModal.querySelector("#profile-avatar-input");
+const avatarInput = document.getElementById("profile-avatar-input");
+const avatarImage = document.querySelector(".profile__avatar");
 
 // Delete form elements
 const deleteModal = document.querySelector("#delete-modal");
-const deleteForm = deleteModal.querySelector("#modal__form");
-const deleteCancelButton = deleteModal.querySelector('button[type="button"]');
+const deleteForm = deleteModal.querySelector("#delete-form");
+const deleteCancelButton = deleteModal.querySelector(".modal__cancel-btn");
+const deleteButton = deleteModal.querySelector(".modal__submit-btn-delete");
 
 //Preview image popup elements
 const previewModal = document.querySelector("#preview-modal");
@@ -123,7 +125,10 @@ function closeModal(modal) {
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
   api
-    .editUserInfo({ name: profileName.value, about: profileDescription.value })
+    .editUserInfo({
+      name: editModalNameInput.value,
+      about: editModalDescriptionInput.value,
+    })
     .then((data) => {
       profileName.textContent = data.name;
       profileDescription.textContent = data.about;
@@ -151,7 +156,7 @@ function handleAddCardSubmit(evt) {
       const cardElement = getCardElement(cardData);
       cardsList.prepend(cardElement);
       cardForm.reset();
-      disabledButton(cardSubmitBtn, settings);
+      disableButton(cardSubmitBtn, settings);
       closeModal(cardModal);
     })
     .catch((err) => {
@@ -177,21 +182,33 @@ function handleAvatarSubmit(evt) {
     .then((data) => {
       avatarImage.src = data.avatar;
       closeModal(avatarModal);
-      avatarForm;
+      avatarFormEl.reset();
+      disableButton(submitButton, settings);
     })
-    .catch(console.error);
+    .catch((err) => {
+      showErrorMessage("Unable to update avatar. Please try again.");
+      submitButton.disabled = false;
+    })
+    .finally(() => {
+      submitButton.textContent = originalText;
+    });
 }
 
+//Deleting cards
 function handleDeleteSubmit(evt) {
   evt.preventDefault();
+  const submitButton = deleteButton;
+  const originalText = submitButton.textContent;
+
+  submitButton.textContent = "Deleting...";
+
   api
     .deleteCard(selectedCardId)
     .then(() => {
-      cardToDelete = document.getElementById(cardId);
+      const cardToDelete = selectedCard;
       if (cardToDelete) {
         cardToDelete.remove();
       }
-      closeModal(deleteModal);
     })
     .catch((err) => {
       showErrorMessage("Unable to delete card. Please try again.");
@@ -199,14 +216,19 @@ function handleDeleteSubmit(evt) {
     .finally(() => {
       submitButton.textContent = originalText;
       submitButton.disabled = false;
+      closeModal(deleteModal);
     });
 }
 
-function handleDeleteCard(cardElement, data) {
+function handleDeleteCard(cardElement, cardId) {
   selectedCard = cardElement;
   selectedCardId = cardId;
   openModal(deleteModal);
 }
+
+deleteCancelButton.addEventListener("click", () => {
+  closeModal(deleteModal);
+});
 
 function handleLike(evt, id) {
   evt.target.classList.toggle("card__like-button_liked");
@@ -214,6 +236,9 @@ function handleLike(evt, id) {
 
 function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
+  cardElement.id = data._id;
+  cardElement.dataset.cardid = data._id;
+
   const cardTitleEl = cardElement.querySelector(".card__title");
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardLikeBtn = cardElement.querySelector(".card__like-button");
@@ -251,11 +276,10 @@ closeButtons.forEach((button) => {
   button.addEventListener("click", () => closeModal(popup));
 });
 
-// todo-select avater modal button at top of page
+// todo-select avatar modal button at top of page
 avatarModalBtn.addEventListener("click", () => {
   openModal(avatarModal);
 });
-avatarForm.addEventListener("submit", handleAvatarSubmit);
 
 deleteModal.addEventListener("submit", handleDeleteSubmit);
 
