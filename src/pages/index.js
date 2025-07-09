@@ -208,6 +208,10 @@ function handleDeleteCard(cardElement, data) {
   openModal(deleteModal);
 }
 
+function handleLike(evt, id) {
+  evt.target.classList.toggle("card__like-button_liked");
+}
+
 function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardTitleEl = cardElement.querySelector(".card__title");
@@ -219,12 +223,9 @@ function getCardElement(data) {
   cardImageEl.src = data.link;
   cardImageEl.alt = data.name;
 
-  cardLikeBtn.addEventListener("click", () => {
-    cardLikeBtn.classList.toggle("card__like-button_liked");
-  });
-
-  cardDelete.addEventListener("click", (evt) =>
-    handleDeleteCard(cardElement, data)
+  cardLikeBtn.addEventListener("click", (evt) => handleLike(evt, data._id));
+  cardDelete.addEventListener("click", () =>
+    handleDeleteCard(cardElement, data._id)
   );
 
   cardImageEl.addEventListener("click", () => {
@@ -256,7 +257,7 @@ avatarModalBtn.addEventListener("click", () => {
 });
 avatarForm.addEventListener("submit", handleAvatarSubmit);
 
-deleteModal.addEventListener("submit", handleDeleteSubmit());
+deleteModal.addEventListener("submit", handleDeleteSubmit);
 
 cardModalBtn.addEventListener("click", () => {
   openModal(cardModal);
