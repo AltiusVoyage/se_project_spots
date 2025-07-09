@@ -5,7 +5,7 @@ import Api from "../utils/Api.js";
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
-    authorization: "fe18e607-fd88-422c-86cf-2d6176e26ed9",
+    authorization: "f5932ff2-0db9-468c-9f2d-fc5a988d067b",
     "Content-Type": "application/json",
   },
 });
@@ -14,6 +14,10 @@ function showErrorMessage(message) {
   const errorElement = document.querySelector("#error-message");
   errorElement.textContent = message;
   errorElement.classList.add("error-message_visible");
+
+  setTimeout(() => {
+    errorElement.classList.remove("error-message_visible");
+  }, 3000);
 }
 
 api
@@ -67,6 +71,8 @@ const avatarInput = avatarModal.querySelector("#profile-avatar-input");
 
 // Delete form elements
 const deleteModal = document.querySelector("#delete-modal");
+const deleteForm = document.querySelector("#delete-form");
+const deleteCancelButton = deleteForm.querySelector('button[type="button"]');
 
 //Preview image popup elements
 const previewModal = document.querySelector("#preview-modal");
@@ -122,19 +128,50 @@ function handleEditFormSubmit(evt) {
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
+  const submitButton = cardSubmitBtn;
+  const originalText = submitButton.textContent;
 
-  const values = { name: cardNameInput.value, link: cardLinkInput.value };
-  const cardEl = getCardElement(values);
-  cardsList.prepend(cardEl);
-  evt.target.reset();
-  disableButton(cardSubmitBtn, settings);
-  closeModal(cardModal);
+  submitButton.textContent = "Saving...";
+  submitButton.disabled = true;
+
+  api
+    .addCard({
+      name: cardNameInput.value,
+      link: cardLinkInput.value,
+    })
+    .then((cardData) => {
+      const cardElement = getCardElement(cardData);
+      cardsList.prepend(cardElement);
+      cardForm.reset();
+      disabledButton(cardSubmitBtn, settings);
+      closeModal(cardModal);
+    })
+    .catch((err) => {
+      showErrorMessage("Unable to add card. Please try again.");
+      submitButton.disabled = false;
+    })
+    .finally(() => {
+      submitButton.textContent = originalText;
+    });
 }
 
 //finish avatar submission handler
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
-  api.editAvatarInfo(avatarInput.value).then().catch(console.error);
+  const submitButton = avatarSubmitBtn;
+  const originalText = submitButton.textContent;
+
+  submitButton.textContent = "Saving...";
+  submitButton.disabled = true;
+
+  api
+    .editAvatarInfo(avatarInput.value)
+    .then((data) => {
+      avatarImage.src = data.avatar;
+      closeModal(avatarModal);
+      avatarForm;
+    })
+    .catch(console.error);
   //finish work
 }
 

@@ -10,6 +10,7 @@
     <title>Spots</title>
   </head>
   <body>
+    <div class="error__message" id="error-message"></div>
     <div class="page">
       <header class="header">
         <img
@@ -163,13 +164,13 @@
       <div class="modal__container">
         <button type="button" class="modal__close"></button>
         <h2 class="modal__title">Edit Avatar</h2>
-        <form id="add-card-form" class="modal__form" novalidate>
+        <form id="edit-avatar-form" class="modal__form" novalidate>
           <label class="modal__label" for="profile-avatar-input">
             Avatar
             <input
               id="profile-avatar-input"
               type="url"
-              class="profile-avatar-input"
+              class="modal__input"
               name="avatar"
               placeholder="avatar goes here"
               required
