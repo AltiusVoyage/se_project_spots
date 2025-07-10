@@ -142,7 +142,6 @@ function handleEditFormSubmit(evt) {
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
-
   const submitButton = cardSubmitBtn;
   const originalText = submitButton.textContent;
 
@@ -155,7 +154,6 @@ function handleAddCardSubmit(evt) {
       link: cardLinkInput.value,
     })
     .then((cardData) => {
-      console.log("submit is clicked", cardData);
       const cardElement = getCardElement(userId, cardData);
       cardsList.prepend(cardElement);
       cardForm.reset();
@@ -217,7 +215,6 @@ function handleDeleteSubmit(evt) {
       showErrorMessage("Unable to delete card. Please try again.");
     })
     .finally(() => {
-      submitButton.textContent = originalText;
       submitButton.disabled = false;
       closeModal(deleteModal);
     });
@@ -245,7 +242,7 @@ function getCardElement(userId, data) {
   const cardLikeBtn = cardElement.querySelector(".card__like-button");
   const cardDelete = cardElement.querySelector(".card__delete-button");
 
-  let isLiked = data.likes.includes(userId);
+  let isLiked = data.isLiked;
 
   cardTitleEl.textContent = data.name;
   cardImageEl.src = data.link;
@@ -254,7 +251,6 @@ function getCardElement(userId, data) {
   if (isLiked) {
     cardLikeBtn.classList.add("card__like-button_liked");
   }
-
   cardLikeBtn.addEventListener("click", () => {
     api
       .handleLike(data._id, isLiked)
@@ -310,5 +306,6 @@ cardModalBtn.addEventListener("click", () => {
 
 editForm.addEventListener("submit", handleEditFormSubmit);
 cardForm.addEventListener("submit", handleAddCardSubmit);
+avatarFormEl.addEventListener("submit", handleAvatarSubmit);
 
 enableValidation(settings);
