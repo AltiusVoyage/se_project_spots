@@ -215,7 +215,7 @@ function handleDeleteSubmit(evt) {
       showErrorMessage("Unable to delete card. Please try again.");
     })
     .finally(() => {
-      submitButton.disabled = false;
+      submitButton.textContent = "Delete";
       closeModal(deleteModal);
     });
 }

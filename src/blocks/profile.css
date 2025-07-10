@@ -3,11 +3,14 @@
   justify-content: space-between;
   padding: 34px 0 20px;
   border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
+  height: 232px;
 }
 
 .profile__avatar-container {
   position: relative;
   margin-right: 20px;
+  height: 190px;
+  width: 190px;
 }
 
 .profile__avatar-btn {
@@ -29,7 +32,6 @@
 
 .profile__avatar-container:hover .profile__avatar-btn {
   visibility: visible;
-  opacity: 50%;
 }
 
 .profile__avatar-btn::after {
@@ -160,7 +162,7 @@
 
   /* set content of ::after elemtn to "", finish moblile avatar*/
 
-  .provile .profile__column {
+  .profile .profile__column {
     max-width: 288px;
     margin-bottom: 20px;
   }
@@ -189,5 +191,32 @@
     width: 288px;
     margin: 0 auto 20px;
     flex-shrink: 0;
+  }
+
+  .profile__avatar-btn {
+    visibility: visible;
+    width: 24px;
+    height: 24px;
+    top: 72px;
+    left: 72px;
+    gap: 8px;
+    padding: 4px;
+    border-radius: 6px;
+    background-color: rgba(33, 33, 33, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: visible;
+  }
+
+  .profile__avatar-btn::after {
+    content: "";
+  }
+
+  .profile__avatar {
+    margin-bottom: 12px;
+    margin-right: 0;
+    height: 80px;
+    width: 80px;
   }
 }
