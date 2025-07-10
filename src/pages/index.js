@@ -6,6 +6,7 @@ import {
   disableButton,
 } from "../scripts/validation.js";
 import Api from "../utils/Api.js";
+let userId;
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
@@ -30,7 +31,7 @@ api
   .then(([user, cards]) => {
     userId = user._id;
     cards.forEach((item) => {
-      const cardElement = getCardElement(item);
+      const cardElement = getCardElement(userId, item);
       cardsList.append(cardElement);
     });
 
@@ -141,6 +142,7 @@ function handleEditFormSubmit(evt) {
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
+
   const submitButton = cardSubmitBtn;
   const originalText = submitButton.textContent;
 
@@ -153,7 +155,8 @@ function handleAddCardSubmit(evt) {
       link: cardLinkInput.value,
     })
     .then((cardData) => {
-      const cardElement = getCardElement(cardData);
+      console.log("submit is clicked", cardData);
+      const cardElement = getCardElement(userId, cardData);
       cardsList.prepend(cardElement);
       cardForm.reset();
       disableButton(cardSubmitBtn, settings);
@@ -232,7 +235,7 @@ deleteCancelButton.addEventListener("click", () => {
 
 // call changeLikeStatus, passing appropriate arguments
 // handle .then(toggle active class) and .catch
-function getCardElement(data, userId) {
+function getCardElement(userId, data) {
   const cardElement = cardTemplate.cloneNode(true);
   cardElement.id = data._id;
   cardElement.dataset.cardid = data._id;
@@ -242,15 +245,15 @@ function getCardElement(data, userId) {
   const cardLikeBtn = cardElement.querySelector(".card__like-button");
   const cardDelete = cardElement.querySelector(".card__delete-button");
 
-  let isLiked = user.data == data.likes;
-
-  if (isLiked) {
-    cardLikeBtn.classList.add("card__like-button_liked");
-  }
+  let isLiked = data.likes.includes(userId);
 
   cardTitleEl.textContent = data.name;
   cardImageEl.src = data.link;
   cardImageEl.alt = data.name;
+
+  if (isLiked) {
+    cardLikeBtn.classList.add("card__like-button_liked");
+  }
 
   cardLikeBtn.addEventListener("click", () => {
     api
