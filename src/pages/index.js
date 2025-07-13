@@ -125,6 +125,12 @@ function closeModal(modal) {
 
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
+  const editSubmitButton = editModalSubmitBtn;
+  const origText = editModalSubmitBtn.textContent;
+
+  editSubmitButton.textContent = "Saving...";
+  editSubmitButton.disabled = true;
+
   api
     .editUserInfo({
       name: editModalNameInput.value,
@@ -137,6 +143,9 @@ function handleEditFormSubmit(evt) {
     })
     .catch((err) => {
       showErrorMessage("Unable to update profile. Please try again.");
+    })
+    .finally(() => {
+      editModalSubmitBtn.textContent = origText;
     });
 }
 
@@ -210,13 +219,13 @@ function handleDeleteSubmit(evt) {
       if (cardToDelete) {
         cardToDelete.remove();
       }
+      closeModal(deleteModal);
     })
     .catch((err) => {
-      showErrorMessage("Unable to delete card. Please try again.");
+      showErrorMessage(err);
     })
     .finally(() => {
-      submitButton.textContent = "Delete";
-      closeModal(deleteModal);
+      submitButton.textContent = originalText;
     });
 }
 
