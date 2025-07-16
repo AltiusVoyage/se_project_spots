@@ -18,7 +18,7 @@ This Webpage is deployed to GitHub Pages
 
 - Deployment Link: https://altiusvoyage.github.io/se_project_spots/
 
-- Video of current progress: https://drive.google.com/file/d/1VkrQtpM8vPx23RXroxz-3VuO2lTpGt9a/view?usp=sharing
+- Video of current progress: https://drive.google.com/file/d/12FcxseFWNg2jI6sC16PG_iVHpB0DJViC/view?usp=drive_link
 
 ## Plans
 
